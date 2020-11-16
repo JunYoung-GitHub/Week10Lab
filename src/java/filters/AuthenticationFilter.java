@@ -13,6 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.User;
 
 public class AuthenticationFilter implements Filter {
     
@@ -25,9 +26,9 @@ public class AuthenticationFilter implements Filter {
             HttpServletRequest httpRequest = (HttpServletRequest)request;
             HttpSession session = httpRequest.getSession();
             String email = (String)session.getAttribute("email");
-            
+       
             if (email == null) {
-                HttpServletResponse httpResponse = (HttpServletResponse)response;
+                HttpServletResponse httpResponse = (HttpServletResponse) response;
                 httpResponse.sendRedirect("login");
                 return;
             }
